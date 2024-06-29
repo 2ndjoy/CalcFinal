@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     private String number=null;
 
 
+    double firstNumber=0;
+    double lastNumber=0;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,4 +183,51 @@ public class MainActivity extends AppCompatActivity {
         }
         textviewResult.setText(number);
     }
+
+    public void plus(){
+        lastNumber=Double.parseDouble(textviewResult.getText().toString());
+        firstNumber=firstNumber+lastNumber;
+        textviewResult.setText(""+firstNumber);
+    }
+
+    public void minus()
+    {
+      if (firstNumber==0){
+          firstNumber=Double.parseDouble(textviewResult.getText().toString());
+      }
+      else {
+          lastNumber=Double.parseDouble(textviewResult.getText().toString());
+          firstNumber=firstNumber-lastNumber;
+      }
+      textviewResult.setText(""+firstNumber);
+    }
+    public void multiply(){
+        if (firstNumber==0){
+            firstNumber=1;
+            lastNumber=Double.parseDouble(textviewResult.getText().toString());
+            firstNumber=firstNumber+lastNumber;
+
+        }
+        else {
+            lastNumber=Double.parseDouble(textviewResult.getText().toString());
+            firstNumber=firstNumber+lastNumber;
+
+        }
+
+        textviewResult.setText(""+firstNumber);
+    }
+    public void divide(){
+        if (firstNumber==0){
+            lastNumber=Double.parseDouble(textviewResult.getText().toString());
+            firstNumber=lastNumber/1;
+
+        }
+        else {
+            lastNumber=Double.parseDouble(textviewResult.getText().toString());
+            firstNumber=firstNumber/lastNumber;
+        }
+        textviewResult.setText(""+firstNumber);
+
+    }
+
 }
