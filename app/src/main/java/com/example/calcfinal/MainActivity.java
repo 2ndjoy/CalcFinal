@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     double firstNumber=0;
     double lastNumber=0;
 
+    String status=null;
+    boolean operator=false;
+
 
 
     @Override
@@ -136,25 +139,77 @@ public class MainActivity extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (operator){
+                    if (status=="multiplication"){
+                        multiply();
+                    } else if (status=="division") {
+                        divide();
+                    } else if (status=="subtraction") {
+                        minus();
+                    }else {
+                        plus();
+                    }
+                }
+                status="sum";
+                operator=false;
+                number=null;
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (operator){
+                    if (status=="multiplication"){
+                        multiply();
+                    } else if (status=="division") {
+                        divide();
+                    } else if (status=="sum") {
+                        plus();
+                    }else {
+                        minus();
+                    }
+                }
+                status="subtraction";
+                operator=false;
+                number=null;
             }
         });
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (operator){
+                    if (status=="sum"){
+                        plus();
+                    } else if (status=="division") {
+                        divide();
+                    } else if (status=="subtraction") {
+                        minus();
+                    }else {
+                        multiply();
+                    }
+                }
+                status="multiplication";
+                operator=false;
+                number=null;
             }
         });
         btnDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (operator){
+                    if (status=="sum"){
+                        plus();
+                    } else if (status=="multiplication") {
+                        multiply();
+                    } else if (status=="subtraction") {
+                        minus();
+                    }else {
+                        divide();
+                    }
+                }
+                status="division";
+                operator=false;
+                number=null;
             }
         });
         btnEqual.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
             number=number+view;
         }
         textviewResult.setText(number);
+        operator=true;
     }
 
     public void plus(){
