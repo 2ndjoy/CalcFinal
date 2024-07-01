@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnOne,btnTwo,btnThree,btnFour,btnFive,btnSix,btnSeven,btnEight,btnNine,btnZero,btnAC,btnDEL,
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     String status=null;
     boolean operator=false;
 
+    DecimalFormat myFormatter=new DecimalFormat("######.######");
 
 
     @Override
@@ -243,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
     public void plus(){
         lastNumber=Double.parseDouble(textviewResult.getText().toString());
         firstNumber=firstNumber+lastNumber;
-        textviewResult.setText(""+firstNumber);
+        textviewResult.setText(myFormatter.format((firstNumber)));
     }
 
     public void minus()
@@ -255,23 +258,24 @@ public class MainActivity extends AppCompatActivity {
           lastNumber=Double.parseDouble(textviewResult.getText().toString());
           firstNumber=firstNumber-lastNumber;
       }
-      textviewResult.setText(""+firstNumber);
+        textviewResult.setText(myFormatter.format((firstNumber)));
     }
     public void multiply(){
         if (firstNumber==0){
             firstNumber=1;
             lastNumber=Double.parseDouble(textviewResult.getText().toString());
-            firstNumber=firstNumber+lastNumber;
+            firstNumber=firstNumber*lastNumber;
 
         }
         else {
             lastNumber=Double.parseDouble(textviewResult.getText().toString());
-            firstNumber=firstNumber+lastNumber;
+            firstNumber=firstNumber*lastNumber;
 
         }
 
-        textviewResult.setText(""+firstNumber);
+        textviewResult.setText(myFormatter.format((firstNumber)));
     }
+
     public void divide(){
         if (firstNumber==0){
             lastNumber=Double.parseDouble(textviewResult.getText().toString());
@@ -282,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             lastNumber=Double.parseDouble(textviewResult.getText().toString());
             firstNumber=firstNumber/lastNumber;
         }
-        textviewResult.setText(""+firstNumber);
+        textviewResult.setText(myFormatter.format((firstNumber)));
 
     }
 
