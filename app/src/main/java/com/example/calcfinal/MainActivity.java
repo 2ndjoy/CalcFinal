@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
         btnDEL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                number=number.substring(0,number.length()-1);
+                textviewResult.setText(number);
 
             }
         });
