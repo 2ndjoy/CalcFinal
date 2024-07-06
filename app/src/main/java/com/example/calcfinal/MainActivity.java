@@ -130,6 +130,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                number=null;
+                status=null;
+                textviewResult.setText("0");
+                textviewHistory.setText("");
+                firstNumber=0;
+                lastNumber=0;
+
             }
         });
         btnDEL.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +225,20 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (operator){
+                    if (status=="sum"){
+                        plus();
+                    } else if (status=="subtraction") {
+                        minus();
+                    } else if (status=="multiplication") {
+                        multiply();
+                    } else if (status=="division") {
+                        divide();
+                    }else {
+                        firstNumber=Double.parseDouble(textviewResult.getText().toString());
+                    }
+                }
+                operator=false;
             }
         });
 
